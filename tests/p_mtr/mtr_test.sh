@@ -18,6 +18,7 @@ IP=$(dig +short ${HOST} A ${HOST} AAAA)
 
 if [[ ! -z "$IP" ]]
 then
+  mtr -nr -c1 ${HOST} > ${FILE}
   COUNT=$(echo "$IP" | grep -cf - ${FILE})
   if [ $COUNT = 1 ]
   then
